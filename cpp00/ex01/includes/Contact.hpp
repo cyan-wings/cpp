@@ -13,6 +13,7 @@ class Contact
 		std::string	_darkestsecret;
 
 	public:
+		Contact(void);
 		Contact(const std::string& firstname, const std::string& lastname,
 				const std::string& nickname, const std::string& phonenumber,
 				const std::string& darkestsecret);
@@ -28,7 +29,5 @@ class Contact
 		void				setPhoneNumber(const std::string& phonenumber);
 		void				setDarkestSecret(const std::string& darkestsecret);
 };
-
-constexpr int	MAX_CONTACTS = 8;
 
 #endif

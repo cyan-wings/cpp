@@ -6,8 +6,11 @@
 class PhoneBook
 {
 	private:
-		Contact	_contact_array[8];
-		int		_index;
+		static const int	MAX_CONTACTS = 3;
+		Contact				_contact_array[MAX_CONTACTS];
+		int					_index;
+		int					_total;
+		void				displayTable(void);
 
 	public:
 		PhoneBook(void);
