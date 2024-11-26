@@ -51,7 +51,15 @@ Fixed			Fixed::operator-( Fixed const &other ) const { return (Fixed(this->toFlo
 
 Fixed			Fixed::operator*( Fixed const &other ) const { return (Fixed(this->toFloat() * other.toFloat())); }
 
-Fixed			Fixed::operator/( Fixed const &other ) const { return (Fixed(this->toFloat() / other.toFloat())); }
+Fixed			Fixed::operator/( Fixed const &other ) const
+{
+	if (other.toFloat() == 0.0f)
+	{
+		std::cerr << "Error: Division by zero" << std::endl;
+		return (Fixed(0));
+	}
+	return (Fixed(this->toFloat() / other.toFloat()));
+}
 
 Fixed			&Fixed::operator++()
 {
