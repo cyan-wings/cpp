@@ -9,7 +9,7 @@ Fixed::Fixed( Fixed const &f )
 	*this = f;
 }
 
-Fixed	&Fixed::operator=( const Fixed &other )
+Fixed	&Fixed::operator=( Fixed const &other )
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
