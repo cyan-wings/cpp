@@ -8,7 +8,7 @@ OBJDIR = objs
 SRC = $(wildcard $(SRCDIR)/*.cpp)
 OBJ = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRC))
 
-EXEC = Fixed
+EXEC = bsp
 
 all: $(EXEC)
 
