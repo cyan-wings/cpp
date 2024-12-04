@@ -9,8 +9,10 @@ class Cat: public Animal
 	public:
 		Cat( void );
 		Cat( Cat const &cat );
-		Cat	&operator=( Cat const &other );
+		Cat		&operator=( Cat const &other );
 		~Cat( void );
+
+		void	makeSound() const;
 };
 
 #endif
