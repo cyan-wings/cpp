@@ -1,26 +1,26 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-void		ClapTrap::printBorder( void ) { std::cout << "----------" << std::endl; }
+void		ClapTrap::printBorder() { std::cout << "----------" << std::endl; }
 
-bool		ClapTrap::checkStatus( void )
+bool		ClapTrap::checkStatus()
 {
 	if (_hp <= 0)
 	{
-		std::cout << "ClapTrap " << _name << " is dead.";
+		std::cout << _name << " is dead.";
 		return ( false );
 	}
 	if (_ep <= 0)
 	{
-		std::cout << "ClapTrap " << _name << " has no energy points left.";
+		std::cout << _name << " has no energy points left.";
 		return ( false );
 	}
 	return ( true );
 }
 
-void		ClapTrap::printHp( void ) { std::cout << "ClapTrap " << _name << " has " << _hp << " health points." << std::endl; }
+void		ClapTrap::printHp() { std::cout << _name << " has " << _hp << " health points." << std::endl; }
 
-void		ClapTrap::printEp( void ) { std::cout << "ClapTrap " << _name << " has " << _ep << " energy points." << std::endl; }
+void		ClapTrap::printEp() { std::cout << _name << " has " << _ep << " energy points." << std::endl; }
 
 ClapTrap::ClapTrap() : _name( "sample" ), _hp( 10 ), _ep( 10 ), _att( 0 )
 {
@@ -38,7 +38,7 @@ ClapTrap::ClapTrap( std::string const &name ) : _name( name ), _hp( 10 ), _ep( 1
 	printBorder();
 }
 
-ClapTrap::ClapTrap( ClapTrap const &ct )  : _name( ct._name ), _hp( ct._hp ), _ep( ct._ep ), _att( ct._att ) {}
+ClapTrap::ClapTrap( ClapTrap const &ct ) : _name( ct._name ), _hp( ct._hp ), _ep( ct._ep ), _att( ct._att ) {}
 
 ClapTrap	&ClapTrap::operator=( ClapTrap const &other )
 {
