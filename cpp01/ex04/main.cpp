@@ -13,13 +13,13 @@ static void	replaceWord
 	std::string	line;
 	size_t		pos;
 
-	while (std::getline(infile, line))
+	while ( std::getline(infile, line) )
 	{
 		pos = line.find(oldword);
-		while (pos != std::string::npos)
+		while ( pos != std::string::npos )
 		{
-			line = line.substr(0, pos) + newword + line.substr(pos + oldword.length());
-			pos = line.find(oldword, pos + newword.length());
+			line = line.substr( 0, pos ) + newword + line.substr( pos + oldword.length() );
+			pos = line.find( oldword, pos + newword.length() );
 		}
 		outfile << line << std::endl;
 	}
@@ -35,24 +35,27 @@ int	main(int argc, char **argv)
 
 	if (argc != 4)
 		return (1);
-	outfilename = std::string(argv[1]) + ".replace";
+	outfilename = std::string( argv[1] ) + ".replace";
 	oldword = argv[2];
-	if (oldword.empty())
-		return (0);
+	if ( oldword.empty() )
+	{
+		std::cerr << "Find word is empty." << std::endl;
+		return ( 0 );
+	}
 	newword = argv[3];
-	std::ifstream infile(argv[1]);
-	if (!infile.is_open())
+	std::ifstream infile( argv[1] );
+	if ( !infile.is_open() )
 	{
 		std::cerr << "Open in file error." << std::endl;
-		return (1);
+		return ( 1 );
 	}
-	std::ofstream outfile(outfilename.c_str());
-	if (!outfile.is_open())
+	std::ofstream outfile( outfilename.c_str() );
+	if ( !outfile.is_open() )
 	{
 		std::cerr << "Open out file error." << std::endl;
 		infile.close();
-		return (1);
+		return ( 1 );
 	}
-	replaceWord(infile, outfile, oldword, newword);
-	return (0);
+	replaceWord( infile, outfile, oldword, newword );
+	return ( 0 );
 }

@@ -1,10 +1,10 @@
 #include "Zombie.hpp"
 
-int main(void)
+int main( void )
 {
-	Zombie *nz = newZombie("yellow");
+	Zombie	*nz = newZombie( "yellow" );
 	nz->announce();
-	randomChump("random chump");
-	delete (nz);
-	return 0;
+	randomChump( "random chump" );
+	delete ( nz );
+	return ( 0 );
 }

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-int main(void)
+int main( void )
 {
 	std::string	stringVAR = "HI THIS IS BRAIN";
 	std::string	*stringPTR = &stringVAR;

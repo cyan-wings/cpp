@@ -8,7 +8,7 @@ OBJDIR = objs
 SRC = $(wildcard $(SRCDIR)/*.cpp)
 OBJ = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRC))
 
-EXEC = ZombieHorde
+EXEC = harlFilter
 
 all: $(EXEC)
 
