@@ -1,4 +1,4 @@
-CXX = c++
+CXX = g++
 CXXFLAGS = -g -Wall -Wextra -Werror -std=c++98
 
 INCDIR = includes

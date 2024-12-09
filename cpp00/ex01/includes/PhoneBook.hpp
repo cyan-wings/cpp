@@ -6,7 +6,7 @@
 class PhoneBook
 {
 	private:
-		static const int	MAX_CONTACTS = 3;
+		static const int	MAX_CONTACTS = 8;
 		Contact				_contact_array[MAX_CONTACTS];
 		int					_index;
 		int					_total;
