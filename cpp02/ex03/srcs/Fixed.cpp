@@ -71,7 +71,7 @@ Fixed			Fixed::operator++( int )
 {
 	Fixed	tmp = *this;
 	++_val;
-	return (*this);
+	return (tmp);
 }
 
 Fixed			&Fixed::operator--()
@@ -84,7 +84,7 @@ Fixed			Fixed::operator--( int )
 {
 	Fixed	tmp = *this;
 	--_val;
-	return (*this);
+	return (tmp);
 }
 
 Fixed			&Fixed::min( Fixed &f1, Fixed &f2 )
