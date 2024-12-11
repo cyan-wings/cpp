@@ -23,6 +23,8 @@ int	main(void)
 	ct4.highFivesGuys();
 	ct4.attack( "Sahni" );
 	ct4.beRepaired( 100 );
+	ct4.guardGate();
+	ct4.guardGate();
 	ct4.highFivesGuys();
 	ct4.highFivesGuys();
 	ct4.highFivesGuys();

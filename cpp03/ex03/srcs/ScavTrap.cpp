@@ -55,3 +55,17 @@ void	ScavTrap::guardGate()
 	printEp();
 	printBorder();
 }
+
+void		ScavTrap::attack( std::string const &target )
+{
+	if (!checkStatus())
+	{
+		std::cout << " ScavTrap " << _name << " can't attack." << std::endl;
+		printBorder();
+		return ;
+	}
+	--_ep;
+	std::cout << "ScavTrap " << _name << " attacks " << target << ", causing " << _att << " points of damage!" << std::endl;
+	printEp();
+	printBorder();
+}

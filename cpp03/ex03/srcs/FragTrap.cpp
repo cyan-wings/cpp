@@ -55,3 +55,17 @@ void		FragTrap::highFivesGuys( void )
 	printEp();
 	printBorder();
 }
+
+void		FragTrap::attack( std::string const &target )
+{
+	if (!checkStatus())
+	{
+		std::cout << " FragTrap " << _name << " can't attack." << std::endl;
+		printBorder();
+		return ;
+	}
+	--_ep;
+	std::cout << "FragTrap " << _name << " attacks " << target << ", causing " << _att << " points of damage!" << std::endl;
+	printEp();
+	printBorder();
+}

@@ -1,7 +1,7 @@
 #include "ScavTrap.hpp"
 #include <iostream>
 
-int	main(void)
+int	main( void )
 {
 	ClapTrap	ct = ClapTrap();
 	ScavTrap	ct1 = ScavTrap( "Second guy" );

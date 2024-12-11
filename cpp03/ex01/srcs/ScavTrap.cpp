@@ -35,7 +35,6 @@ ScavTrap	&ScavTrap::operator=( ScavTrap const &other )
 	return ( *this );
 }
 
-
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << _name << " is destroyed..." << std::endl;
@@ -52,6 +51,20 @@ void	ScavTrap::guardGate()
 	}
 	_ep -= 10;
 	std::cout << "ScavTrap " << _name << " is now in Gate keeper mode." << std::endl;
+	printEp();
+	printBorder();
+}
+
+void		ScavTrap::attack( std::string const &target )
+{
+	if (!checkStatus())
+	{
+		std::cout << " ScavTrap " << _name << " can't attack." << std::endl;
+		printBorder();
+		return ;
+	}
+	--_ep;
+	std::cout << "ScavTrap " << _name << " attacks " << target << ", causing " << _att << " points of damage!" << std::endl;
 	printEp();
 	printBorder();
 }

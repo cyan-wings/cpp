@@ -67,7 +67,7 @@ ClapTrap::~ClapTrap()
 	printBorder();
 }
 
-void		ClapTrap::attack( std::string const & target )
+void		ClapTrap::attack( std::string const &target )
 {
 	if (!checkStatus())
 	{
