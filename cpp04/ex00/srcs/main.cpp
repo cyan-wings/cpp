@@ -16,6 +16,11 @@ static void	wrongMain( void )
 	std::cout << wa->getType() << " " << std::endl;
 	wa->makeSound();
 	delete wa;
+
+	const WrongCat		*wc = new WrongCat();
+	std::cout << wc->getType() << " " << std::endl;
+	wc->makeSound();
+	delete wc;
 }
 
 int	main( void )

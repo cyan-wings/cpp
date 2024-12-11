@@ -7,7 +7,7 @@ Animal::Animal( std::string const &type ) : _type( type ) { std::cout << "Animal
 
 Animal::Animal( Animal const &animal ) : _type( animal._type ) { std::cout << "Animal " << _type << " created from copy..." << std::endl; }
 
-Animal		&Animal::operator=( Animal const &other )
+Animal	&Animal::operator=( Animal const &other )
 {
 	if ( this != &other )
 		_type = other._type;
@@ -18,4 +18,4 @@ Animal::~Animal() { std::cout << "Animal " << _type << " destroyed..." << std::e
 
 std::string	Animal::getType() const { return (_type); }
 
-void		Animal::makeSound() const { std::cout << "Animal " << _type << " ~~~" << std::endl; }
+void	Animal::makeSound() const { std::cout << "Animal " << _type << " ~~~" << std::endl; }

@@ -1,13 +1,13 @@
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat() : Animal( "Cat" )
+Cat::Cat() : AAnimal( "Cat" )
 {
 	_brain = new Brain();
 	std::cout << "Cat " << _type << " created..." << std::endl;
 }
 
-Cat::Cat( Cat const &cat ) : Animal( cat )
+Cat::Cat( Cat const &cat ) : AAnimal( cat )
 {
 	_brain = new Brain();
 	std::cout << "Cat " << _type << " created from copy..." << std::endl;

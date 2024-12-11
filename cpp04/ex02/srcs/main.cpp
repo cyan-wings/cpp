@@ -1,12 +1,12 @@
 #include <iostream>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 
 void	testSubject( void ) {
 	std::cout << "\n>>> RUNNING SUBJECT TESTS\n" << std::endl;
 	/* Subject asking to create and make an array with half Dog and half Cat */
-	Animal	*animals[4];
+	AAnimal	*animals[4];
 
 	for (int i = 0; i < 4; i++) {
 		if (i < 2)
@@ -21,8 +21,8 @@ void	testSubject( void ) {
 		delete animals[i];
 
 	/* Provided by subject */
-	const Animal*	j = new Dog();
-	const Animal*	i = new Cat();
+	const AAnimal*	j = new Dog();
+	const AAnimal*	i = new Cat();
 
 	delete j;
 	delete i;
@@ -71,6 +71,7 @@ void	testDeepCopy( void ) {
 
 int	main( void )
 {
+	//AAnimal test;
 	testSubject();
 	testDeepCopy();
 	return ( 0 );

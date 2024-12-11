@@ -1,13 +1,13 @@
 #include "Dog.hpp"
 #include <iostream>
 
-Dog::Dog() : Animal( "Dog" )
+Dog::Dog() : AAnimal( "Dog" )
 {
 	_brain = new Brain();
 	std::cout << "Dog " << _type << " created..." << std::endl;
 }
 
-Dog::Dog( Dog const &Dog ) : Animal( Dog )
+Dog::Dog( Dog const &Dog ) : AAnimal( Dog )
 {
 	_brain = new Brain();
 	std::cout << "Dog " << _type << " created from copy..." << std::endl;

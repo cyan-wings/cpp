@@ -2,10 +2,10 @@
 # define __CAT_HPP__
 
 # include "Brain.hpp"
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include <string>
 
-class Cat: public Animal
+class Cat: public AAnimal
 {
 	private:
 		Brain		*_brain;
