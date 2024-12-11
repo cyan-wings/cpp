@@ -18,4 +18,4 @@ WrongAnimal::~WrongAnimal() { std::cout << "WrongAnimal " << _type << " destroye
 
 std::string	WrongAnimal::getType() const { return (_type); }
 
-void		WrongAnimal::makeSound() const { std::cout << "~~~" << std::endl; }
+void		WrongAnimal::makeSound() const { std::cout << "WrongAnimal " << _type << " ~~~" << std::endl; }

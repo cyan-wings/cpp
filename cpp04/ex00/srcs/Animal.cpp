@@ -18,4 +18,4 @@ Animal::~Animal() { std::cout << "Animal " << _type << " destroyed..." << std::e
 
 std::string	Animal::getType() const { return (_type); }
 
-void		Animal::makeSound() const { std::cout << "~~~" << std::endl; }
+void		Animal::makeSound() const { std::cout << "Animal " << _type << " ~~~" << std::endl; }

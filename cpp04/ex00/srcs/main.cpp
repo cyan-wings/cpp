@@ -13,6 +13,7 @@ static void	wrongMain( void )
 	wa->makeSound();
 	delete wa;
 	wa = new WrongCat();
+	std::cout << wa->getType() << " " << std::endl;
 	wa->makeSound();
 	delete wa;
 }
@@ -28,6 +29,7 @@ int	main( void )
 	i->makeSound();
 	j->makeSound();
 	meta->makeSound();
+	std::cout << "\n>>> RUNNNING WRONGMAIN TESTS\n" << std::endl;
 	wrongMain();
 	delete meta;
 	delete j;
