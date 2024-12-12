@@ -1,8 +1,10 @@
 #ifndef __ICHARACTER_HPP__
 # define __ICHARACTER_HPP__
 
-# include <AMateria.hpp>
+# include "AMateria.hpp"
 # include <string>
+
+class AMateria;
 
 class ICharacter
 {

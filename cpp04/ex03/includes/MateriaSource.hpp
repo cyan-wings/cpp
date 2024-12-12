@@ -9,18 +9,16 @@
 class MateriaSource : public IMateriaSource
 {
 	private:
-		int			_idx;
+		int			_totaltemplates;
 		AMateria	*_templates[MAX_TEMPLATES];
-
-		void		deleteTemplates(void);
 
 	public:
 		MateriaSource( void );
 		MateriaSource( MateriaSource const &materiasource );
 		MateriaSource	&operator=( MateriaSource const &other );
-		~MateriaSource( void );
+		virtual ~MateriaSource( void );
 
-		virtual void		learnMateria( AMateria* materia );
+		virtual void		learnMateria( AMateria* m );
 		virtual AMateria*	createMateria( std::string const &type );
 };
 

@@ -16,4 +16,4 @@ AMateria::~AMateria() {}
 
 std::string const	&AMateria::getType() const { return (_type); }
 
-void	AMateria::use( ICharacter &target ) { std::cout << "* " << target.getName() << "uses materia *" << std::endl; }
+void	AMateria::use( ICharacter &target ) { std::cout << "* Materia is used on " << target.getName() << ". *" << std::endl; }

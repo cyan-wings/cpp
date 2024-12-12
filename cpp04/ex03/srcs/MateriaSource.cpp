@@ -1,58 +1,76 @@
 #include "MateriaSource.hpp"
 #include <iostream>
 
-void	MateriaSource::deleteTemplates()
+MateriaSource::MateriaSource() : _totaltemplates( 0 )
 {
-	for (int i = 0; i < MAX_TEMPLATES; i++) {
-		if (this->_templates[i]) {
-			delete this->_templates[i];
-			this->_templates[i] = NULL;
-		}
-	}
+	int	i = -1;
+
+	while ( ++i < MAX_TEMPLATES )
+		_templates[i] = NULL;
 }
 
-MateriaSource::MateriaSource() : _idx( 0 ) {}
 
-MateriaSource::MateriaSource( MateriaSource const &materiasource ) : _idx( materiasource._idx ), _templates( materiasource._templates )
+MateriaSource::MateriaSource( MateriaSource const &materiasource ) : _totaltemplates( materiasource._totaltemplates )
 {
-	deleteTemplates();
-	*this = materiaSource;
+	int	i = -1;
+
+	while ( ++i < MAX_TEMPLATES )
+		_templates[i] = materiasource._templates[i];
 }
 
 MateriaSource	&MateriaSource::operator=( MateriaSource const &materiasource )
 {
-	deleteTemplates();
-	for (int i = 0; i < MAX_TEMPLATES; i++)
+	int	i = -1;
+
+	while ( ++i < MAX_TEMPLATES )
 	{
-		if (materiasource._templates[i])
-			_templates[i] = materiasource._templates[i];
+		delete _templates[i];
+		_templates[i] = materiasource._templates[i];
 	}
-	return (*this);
+	return ( *this );
 }
 
-MateriaSource::~MateriaSource() { deleteTemplates(); }
-
-void	MateriaSource::learnMateria( AMateria* materia )
+MateriaSource::~MateriaSource()
 {
-	for (int i = 0; i < MAX_TEMPLATES; i++) {
-		if (!_templates[i])
+	int	i = -1;
+
+	while ( ++i < MAX_TEMPLATES )
+	{
+		delete _templates[i];
+		_templates[i] = NULL;
+	}
+}
+
+void	MateriaSource::learnMateria( AMateria *m )
+{
+	int	i = -1;
+
+	if ( _totaltemplates == MAX_TEMPLATES )
+	{
+		std::cout << "MateriaSource templates full! Cannot learn materia: " << m->getType() << std::endl;
+		return ;
+	}
+	while ( ++i < 4 )
+	{
+		if ( _templates[i] == NULL )
 		{
-			_templates[i] = materia;
-			std::cout << "Learnt new materia: " << materia->getType() << "." << std::endl;
-			return ;
+			_templates[i] = m;
+			++_totaltemplates;
+			std::cout << "MateriaSource learnt " << m->getType() << " and stored at index: " << i << "." << std::endl;
+			break ;
 		}
 	}
-	std::cout << BYEL "[MateriaSource] " CRESET "Couldn't learn new material " BCYN << \
-		materia->getType() << CRESET "..." << std::endl;
-	delete materia;
 }
 
-AMateria*	MateriaSource::createMateria(std::string const &type)
+AMateria*	MateriaSource::createMateria( std::string const &type )
 {
-	for (int i = 0; i < MAX_TEMPLATES; i++) {
-		if (this->_templates[i] && this->_templates[i]->getType() == type)
-			return (this->_templates[i]->clone());
+	int	i = -1;
+
+	while ( ++i < MAX_TEMPLATES )
+	{
+		if (_templates[i] && _templates[i]->getType() == type)
+			return (_templates[i]->clone());
 	}
+	std::cout << "MateriaSource does not know " << type << " Materia." << std::endl;
 	return (0);
 }
-
