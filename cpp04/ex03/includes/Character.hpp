@@ -2,9 +2,9 @@
 # define __CHARACTER_HPP__
 
 # include <string>
-# include "AMateria.hpp"
+# include "ICharacter.hpp"
 
-class Character
+class Character : public ICharacter
 {
 	private:
 		std::string	_name;
@@ -17,7 +17,9 @@ class Character
 		~Character( void );
 
 		std::string const	&getName( void ) const;
-
+		virtual void				equip(AMateria* m) = 0;
+		virtual void				unequip(int idx) = 0;
+		virtual void				use(int idx, ICharacter& target) = 0;
 
 };
 

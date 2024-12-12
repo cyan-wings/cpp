@@ -1,8 +1,9 @@
 #ifndef __AMATERIA_HPP__
 # define __AMATERIA_HPP__
 
-# include "ICharacter.hpp"
 # include <string>
+
+class ICharacter;
 
 class AMateria
 {
@@ -15,9 +16,9 @@ class AMateria
 		AMateria	&operator=(AMateria const &other );
 		virtual ~AMateria( void );
 
-		std::string const	&getType() const;
+		std::string const	&getType( void ) const;
 
-		virtual AMateria	*clone() const = 0;
+		virtual AMateria	*clone( void ) const = 0;
 		virtual void		use( ICharacter &target );
 };
 
