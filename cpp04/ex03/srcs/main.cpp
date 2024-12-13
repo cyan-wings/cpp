@@ -35,13 +35,14 @@ void	testCharacter(void)
 	ICharacter	*pedro = new Character("Pedro");
 	ICharacter	*ivan = new Character("Ivan");
 	AMateria	*ice = new Ice();
+	AMateria	*tmp = new Cure();
 
 	/* Filling Pedro's inventory */
 	pedro->equip(new Ice());
 	pedro->equip(ice);
 	pedro->equip(new Ice());
 	pedro->equip(new Cure());
-	pedro->equip(new Cure()); // Over filling Pedro's inventory
+	pedro->equip(tmp); // Over filling Pedro's inventory
 	/* Filling Ivan's inventory */
 	ivan->equip(new Cure());
 	ivan->equip(new Cure());
@@ -64,6 +65,7 @@ void	testCharacter(void)
 	delete pedro;
 	delete ivan;
 	delete ice;
+	delete tmp;
 }
 
 void	testMateriaSource()
@@ -72,13 +74,14 @@ void	testMateriaSource()
 	IMateriaSource	*materiaSource = new MateriaSource();
 	ICharacter		*pedro = new Character("Pedro");
 	ICharacter		*brandon = new Character("Brandon");
+	AMateria		*tmp = new Cure();
 	
 	/* Learning new materias */
 	materiaSource->learnMateria(new Ice());
 	materiaSource->learnMateria(new Cure());
 	materiaSource->learnMateria(new Cure());
 	materiaSource->learnMateria(new Cure());
-	materiaSource->learnMateria(new Cure()); // Over learning items
+	materiaSource->learnMateria(tmp); // Over learning items
 
 	/* Equiping learnt materias */
 	pedro->equip(materiaSource->createMateria("cure"));
@@ -94,6 +97,7 @@ void	testMateriaSource()
 	delete materiaSource;
 	delete pedro;
 	delete brandon;
+	delete tmp;
 }
 
 int	main(void)

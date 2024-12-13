@@ -56,7 +56,7 @@ void	Character::equip( AMateria *m )
 	{
 		if ( _inventory[i] == NULL )
 		{
-			_inventory[i] = m;
+			_inventory[i] = m->clone();
 			++_totalmateria;
 			std::cout << _name << " equipped AMateria " << m->getType() << " at index: " << i << "." << std::endl;
 			break ;
