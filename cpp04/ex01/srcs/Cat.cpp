@@ -9,7 +9,7 @@ Cat::Cat() : Animal( "Cat" )
 
 Cat::Cat( Cat const &cat ) : Animal( cat )
 {
-	_brain = new Brain();
+	_brain = new Brain(*cat._brain);
 	std::cout << "Cat " << _type << " created from copy..." << std::endl;
 }
 

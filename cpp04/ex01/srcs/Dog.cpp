@@ -7,9 +7,9 @@ Dog::Dog() : Animal( "Dog" )
 	std::cout << "Dog " << _type << " created..." << std::endl;
 }
 
-Dog::Dog( Dog const &Dog ) : Animal( Dog )
+Dog::Dog( Dog const &dog ) : Animal( dog )
 {
-	_brain = new Brain();
+	_brain = new Brain(*dog._brain);
 	std::cout << "Dog " << _type << " created from copy..." << std::endl;
 }
 
