@@ -2,12 +2,13 @@
 # define __BUREAUCRAT_HPP__
 
 # include <string>
+# include <iostream>
 
 class Bureaucrat
 {
 	private:
 		std::string const	_name;
-		int			_grade;
+		int					_grade;
 	
 	public:
 		Bureaucrat( std::string const &name, int grade );
@@ -23,15 +24,15 @@ class Bureaucrat
 		class GradeTooLowException : public std::exception
 		{
 			const char	*what( void ) const throw();
-		}
+		};
 
 		std::string const	&getName( void ) const;
-		int			getGrade( void ) const;
+		int					getGrade( void ) const;
 
-		void			incrementGrade( void );
-		void			decrementGrade( void );
+		void				incrementGrade( void );
+		void				decrementGrade( void );
 };
 
-std::ostream	&operator<<( std::ostream &out, Bureaucrat const &b);
+std::ostream				&operator<<( std::ostream &out, Bureaucrat const &b);
 
 #endif
