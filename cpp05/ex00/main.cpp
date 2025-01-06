@@ -3,20 +3,52 @@
 
 int	main( void )
 {
-	Bureaucrat	*matthew = NULL;
-	Bureaucrat	*joe = NULL;
+	try { Bureaucrat	fail1 = Bureaucrat("Fail1", 0); }
+	catch ( std::exception const &e ) { std::cerr << e.what() << std::endl; }
+
+	try { Bureaucrat	fail2 = Bureaucrat("Fail2", 151); }
+	catch ( std::exception const &e ) { std::cerr << e.what() << std::endl; }
+
+	Bureaucrat	matthew = Bureaucrat("Matthew", 50);
+	Bureaucrat	joe = Bureaucrat("Joe", 100);
+	joe = matthew;
+	Bureaucrat	copy = Bureaucrat(matthew);
+	std::cout << matthew << std::endl;
+	std::cout << joe << std::endl;
+	std::cout << copy << std::endl;
 
 	try
 	{
-		matthew = new Bureaucrat( "Matthew", 150 );
-		matthew->decrementGrade();
+		std::cout << "Before: " << matthew << std::endl;
+		matthew.incrementGrade();
+		std::cout << "After: " << matthew << std::endl;
 	}
-	catch ( std::exception const &e )
+	catch ( std::exception const &e ) { std::cerr << e.what() << std::endl; }
+	try
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << "Before: " << matthew << std::endl;
+		matthew.decrementGrade();
+		std::cout << "After: " << matthew << std::endl;
 	}
-	joe = new Bureaucrat( *matthew );
-	std::cout << *matthew << std::endl;
-	std::cout << *joe << std::endl;
-	delete matthew;
+	catch ( std::exception const &e ) { std::cerr << e.what() << std::endl; }
+
+	Bureaucrat	newbie = Bureaucrat("Newbie", 150);
+	try
+	{
+		std::cout << "Before: " << newbie << std::endl;
+		newbie.decrementGrade();
+		std::cout << "After: " << newbie << std::endl;
+	}
+	catch ( std::exception const &e ) { std::cerr << e.what() << std::endl; }
+
+	Bureaucrat	pm = Bureaucrat("PM", 1);
+	try
+	{
+		std::cout << "Before: " << pm << std::endl;
+		pm.incrementGrade();
+		std::cout << "After: " << pm << std::endl;
+	}
+	catch ( std::exception const &e ) { std::cerr << e.what() << std::endl; }
+
+	return ( 0 );
 }

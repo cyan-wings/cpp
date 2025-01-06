@@ -1,7 +1,13 @@
 #include "Form.hpp"
 
 Form::Form( std::string const &name, int reqsigngrade, int reqexecgrade ) :
-_name( name ), _sign( false ), _reqSignGrade( reqsigngrade ), _reqExecGrade( reqexecgrade ) {}
+_name( name ), _sign( false ), _reqSignGrade( reqsigngrade ), _reqExecGrade( reqexecgrade )
+{
+	if (_reqSignGrade < 1 || _reqExecGrade < 1)
+		throw Form::GradeTooHighException();
+	if (_reqSignGrade > 150 || _reqExecGrade > 150 )
+		throw Form::GradeTooLowException();
+}
 
 Form::Form( Form const &f ) :
 _name( f._name ), _sign( f._sign ), _reqSignGrade( f._reqSignGrade ), _reqExecGrade( f._reqExecGrade ) {}
