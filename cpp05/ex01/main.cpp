@@ -28,8 +28,9 @@ int	main( void )
 	std::cout << "Not yet sign - " << std::endl << toBeSigned;
 	Bureaucrat	matthew = Bureaucrat("Matthew", 51);
 	matthew.signForm(toBeSigned);
-	std::cout << "Can't sign -" << std::endl << toBeSigned;
+	std::cout << "Can't sign - " << matthew << std::endl << toBeSigned;
 	matthew.incrementGrade();
+	std::cout << "Matthew upgrades: " << matthew << std::endl;
 	matthew.signForm(toBeSigned);
 	std::cout << "Signed -" << std::endl << toBeSigned;
 	matthew.signForm(toBeSigned);
