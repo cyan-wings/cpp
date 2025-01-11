@@ -3,7 +3,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 IFLAGS = -I.
 
 NAME = Serialization
-SRCS = Serializer.cpp main.cpp
+SRCS = Data.cpp Serializer.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -23,4 +23,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean
-
