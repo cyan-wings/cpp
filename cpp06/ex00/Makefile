@@ -1,17 +1,18 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+IFLAGS = -I.
 
-NAME = Interns
-SRCS = 
+NAME = ScalarConverter
+SRCS = ScalarConverter.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $<
+	$(CXX) $(CXXFLAGS) $(IFLAGS) -c $<
 
 clean:
 	rm -rf $(OBJS)
@@ -21,4 +22,5 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean
+
