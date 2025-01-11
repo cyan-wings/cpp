@@ -4,34 +4,34 @@ void	ScalarConverter::disError( std::string const &param ) { std::cout << param 
 
 void	ScalarConverter::disNegInf( void )
 {
-	std::cout << "char: Invalid" << std::endl;
+	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: " << INT_MIN << std::endl;
-	std::cout << "float: " << -std::numeric_limits<float>::infinity() << std::endl;
+	std::cout << "float: " << -std::numeric_limits<float>::infinity() << "f" << std::endl;
 	std::cout << "double: " << -std::numeric_limits<double>::infinity() << std::endl;
 }
 
 void	ScalarConverter::disPosInf( void )
 {
-	std::cout << "char: Invalid" << std::endl;
+	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: " << INT_MAX << std::endl;
-	std::cout << "float: " << std::numeric_limits<float>::infinity() << std::endl;
+	std::cout << "float: " << std::numeric_limits<float>::infinity() << "f" << std::endl;
 	std::cout << "double: " <<std::numeric_limits<double>::infinity() << std::endl;
 }
 
 void	ScalarConverter::disNan( void )
 {
-	std::cout << "char: Invalid" << std::endl;
-	std::cout << "int: Invalid" << std::endl;
-	std::cout << "float: " << std::nanf("") << std::endl;
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << std::nanf("") << "f" << std::endl;
 	std::cout << "double: " << std::nan("") << std::endl;
 }
 
 void	ScalarConverter::disChar( char c )
 {
 	if (c >= ' ' && c <= '~')
-		std::cout << "char: " << c << std::endl;
+		std::cout << "char: \'" << c << "\'" << std::endl;
 	else
-		std::cout << "char: Not displayable" << std::endl;
+		std::cout << "char: Non displayable" << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
 	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
@@ -42,11 +42,11 @@ void	ScalarConverter::disInt( std::string const &param )
 	int	n = atoi(param.c_str());
 
 	if (n < 0 || n > 127)
-		std::cout << "char: Invalid" << std::endl;
+		std::cout << "char: impossible" << std::endl;
 	else if (n < 32 || n == 127)
-		std::cout << "char: Not displayable" << std::endl;
+		std::cout << "char: Non displayable" << std::endl;
 	else
-		std::cout << "char: " << static_cast<char>(n) << std::endl;
+		std::cout << "char: \'" << static_cast<char>(n) << "\'" << std::endl;
 	std::cout << "int: " << n << std::endl;
 	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(n) << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(n) << std::endl;
@@ -57,11 +57,11 @@ void	ScalarConverter::disFloat( std::string const &param )
 	float	n = atof(param.c_str());
 
 	if (n < 0 || n > 127)
-		std::cout << "char: Invalid" << std::endl;
+		std::cout << "char: impossible" << std::endl;
 	else if (n < 32 || n == 127)
-		std::cout << "char: Not displayable" << std::endl;
+		std::cout << "char: Non displayable" << std::endl;
 	else
-		std::cout << "char: " << static_cast<char>(n) << std::endl;
+		std::cout << "char: \'" << static_cast<char>(n) << "\'" << std::endl;
 	std::cout << "int: " << static_cast<int>(n) << std::endl;
 	std::cout << "float: " << std::fixed << std::setprecision(2) << n << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(2) << static_cast<double>(n) << std::endl;
@@ -72,11 +72,11 @@ void	ScalarConverter::disDouble( std::string const &param )
 	double	n = atof(param.c_str());
 
 	if (n < 0 || n > 127)
-		std::cout << "char: Invalid" << std::endl;
+		std::cout << "char: impossible" << std::endl;
 	else if (n < 32 || n == 127)
-		std::cout << "char: Not displayable" << std::endl;
+		std::cout << "char: Non displayable" << std::endl;
 	else
-		std::cout << "char: " << static_cast<char>(n) << std::endl;
+		std::cout << "char: \'" << static_cast<char>(n) << "\'" << std::endl;
 	std::cout << "int: " << static_cast<int>(n) << std::endl;
 	std::cout << "float: " << std::fixed << std::setprecision(2) << static_cast<float>(n) << "f" << std::endl;
 	std::cout << "float: " << std::fixed << std::setprecision(2) << n << std::endl;
