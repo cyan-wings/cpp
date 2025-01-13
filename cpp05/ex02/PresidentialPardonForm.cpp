@@ -12,7 +12,7 @@ AForm( "Presidential Pardon Form", 25, 5, scf._target) {}
 
 PresidentialPardonForm::~PresidentialPardonForm( void ) {}
 
-void						PresidentialPardonForm::execute( Bureaucrat const &executor ) const
+void	PresidentialPardonForm::execute( Bureaucrat const &executor ) const
 {
 	checkExecReq(executor);
 	std::cout << _target << " pardoned by Zaphod Beeblebrox." << std::endl;

@@ -11,7 +11,7 @@ AForm( "Shrubbery Creation Form", 145, 137, scf._target) {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm( void ) {}
 
-void						ShrubberyCreationForm::execute( Bureaucrat const &executor ) const
+void	ShrubberyCreationForm::execute( Bureaucrat const &executor ) const
 {
 	checkExecReq(executor);
 	std::string		outfile = _target + "_shrubbery";

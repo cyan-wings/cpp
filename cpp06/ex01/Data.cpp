@@ -4,7 +4,7 @@ Data::Data( std::string const &meta ) : _meta( meta ) {}
 
 Data::Data( Data const &d ) : _meta( d._meta ) {}
 
-Data const			&Data::operator=( Data const &other )
+Data				&Data::operator=( Data const &other )
 {
 	if (_meta != other._meta)
 		_meta = other._meta;

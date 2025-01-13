@@ -14,7 +14,7 @@ class Intern
 	private:
 		int				_number;
 		Intern( Intern const &intern );
-		Intern const &operator=( Intern const &other );
+		Intern			&operator=( Intern const &other );
 
 		AForm			*makePresidential(std::string const &target) const;
 		AForm			*makeRobotomy(std::string const &target) const;

@@ -21,7 +21,7 @@ _name( name ), _sign( false ), _reqSignGrade( reqsigngrade ), _reqExecGrade( req
 AForm::AForm( AForm const &f ) :
 _name( f._name ), _sign( f._sign ), _reqSignGrade( f._reqSignGrade ), _reqExecGrade( f._reqExecGrade ), _target( f._target ) {}
 
-AForm const	&AForm::operator=( AForm const &other )
+AForm	&AForm::operator=( AForm const &other )
 {
 	if (_sign != other._sign)
 		_sign = other._sign;

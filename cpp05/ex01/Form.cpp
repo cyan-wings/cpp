@@ -12,7 +12,7 @@ _name( name ), _sign( false ), _reqSignGrade( reqsigngrade ), _reqExecGrade( req
 Form::Form( Form const &f ) :
 _name( f._name ), _sign( f._sign ), _reqSignGrade( f._reqSignGrade ), _reqExecGrade( f._reqExecGrade ) {}
 
-Form const	&Form::operator=( Form const &other )
+Form		&Form::operator=( Form const &other )
 {
 	if (_sign != other._sign)
 		_sign = other._sign;

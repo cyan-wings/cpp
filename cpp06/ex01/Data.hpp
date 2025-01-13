@@ -12,7 +12,7 @@ class Data
 	public:
 		Data( std::string const &meta );
 		Data( Data const &d );
-		Data const			&operator=( Data const &other );
+		Data				&operator=( Data const &other );
 		~Data( void );
 
 		std::string const	&getData( void ) const;

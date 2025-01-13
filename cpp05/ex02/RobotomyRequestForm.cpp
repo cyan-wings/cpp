@@ -11,7 +11,7 @@ AForm( "Robotomy Request Form", 72, 45, scf._target) {}
 
 RobotomyRequestForm::~RobotomyRequestForm( void ) {}
 
-void						RobotomyRequestForm::execute( Bureaucrat const &executor ) const
+void	RobotomyRequestForm::execute( Bureaucrat const &executor ) const
 {
 	checkExecReq(executor);
 	std::cout << "Bzzz..." << std::endl;

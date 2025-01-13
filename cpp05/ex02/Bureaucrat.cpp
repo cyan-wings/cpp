@@ -10,7 +10,7 @@ Bureaucrat::Bureaucrat( std::string const &name, int grade ) : _name( name ), _g
 
 Bureaucrat::Bureaucrat( Bureaucrat const &b ) : _name( b._name ), _grade( b._grade ) {}
 
-Bureaucrat		&Bureaucrat::operator=( Bureaucrat const &other )
+Bureaucrat	&Bureaucrat::operator=( Bureaucrat const &other )
 {
 	if (_grade != other._grade)
 		_grade = other._grade;

@@ -11,7 +11,7 @@ class ScalarConverter
 	private:
 		ScalarConverter( void );
 		ScalarConverter( ScalarConverter const &sc );
-		ScalarConverter const	&operator=( ScalarConverter const &other );
+		ScalarConverter			&operator=( ScalarConverter const &other );
 		~ScalarConverter( void );
 
 		static void				disError( std::string const &param );

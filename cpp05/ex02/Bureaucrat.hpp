@@ -16,17 +16,17 @@ class Bureaucrat
 	public:
 		Bureaucrat( std::string const &name, int grade );
 		Bureaucrat( Bureaucrat const &b );
-		Bureaucrat		&operator=( Bureaucrat const &other );
+		Bureaucrat			&operator=( Bureaucrat const &other );
 		~Bureaucrat( void );
 
 		class GradeTooHighException : public std::exception
 		{
-			const char	*what( void ) const throw();
+			const char		*what( void ) const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
-			const char	*what( void ) const throw();
+			const char		*what( void ) const throw();
 		};
 
 		std::string const	&getName( void ) const;

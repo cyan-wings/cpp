@@ -24,7 +24,7 @@ class AForm
 	public:
 		AForm( std::string const &name, int reqsigngrade, int reqexecgrade );
 		AForm( AForm const &f );
-		AForm const			&operator=( AForm const &other );
+		AForm 				&operator=( AForm const &other );
 		virtual ~AForm( void );
 
 		class FormException : public std::exception

@@ -9,7 +9,7 @@ class Serializer
 	private:
 		Serializer( void );
 		Serializer( Serializer const &s );
-		Serializer const	&operator=( Serializer const &other );
+		Serializer			&operator=( Serializer const &other );
 		~Serializer( void );
 
 	public:

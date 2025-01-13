@@ -18,7 +18,7 @@ class Form
 	public:
 		Form( std::string const &name, int reqsigngrade, int reqexecgrade );
 		Form( Form const &f );
-		Form const			&operator=( Form const &other );
+		Form				&operator=( Form const &other );
 		~Form( void );
 
 		class GradeTooHighException : public std::exception
