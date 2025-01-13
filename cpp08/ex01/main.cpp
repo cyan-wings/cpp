@@ -72,6 +72,7 @@ int	main( void )
 	std::cout << "Given test by assignment:" << std::endl;
 	givenTest();
 	std::cout << "_________________________" << std::endl << std::endl;
+	std::cout << "Self test:" << std::endl;
 	selfTest();
 	return ( 0 );
 }
