@@ -116,6 +116,11 @@ bool	BitcoinExchange::parseInputValue( std::string const &valueStr, double &valu
 		pError("not a positive number.");
 		return ( false );
 	}
+	if ( value == 0.0 )
+	{
+		pError("cannot be 0.");
+		return ( false );
+	}
 	if ( value > 2147483647 )
 	{
 		pError("too large a number.");
