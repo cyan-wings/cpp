@@ -12,6 +12,17 @@ static bool	isValidInteger( std::string const &input )
 	return ( !ss.fail() && ss.eof() );
 }
 
+static void	performSort( std::vector<int> &numbers )
+{
+	std::cout << "Before:\t";
+	PmergeMe::printCont( numbers );
+
+	PmergeMe::sort( numbers );
+
+	std::cout << "After:\t";
+	PmergeMe::printCont( numbers );
+}
+
 int	main( int argc, char **argv )
 {
 	if (argc < 3)
@@ -29,13 +40,7 @@ int	main( int argc, char **argv )
 		ss >> num;
 		numbers.push_back(num);
 	}
-
-	std::vector<int>::iterator	it;
-	std::cout << "Before: ";
-	for (it = numbers.begin(); it != numbers.end(); it++)
-		std::cout << " " << *it;
-	std::cout << std::endl;
-
+	performSort( numbers );
 	PmergeMe::compute( numbers );
 	return ( 0 );
 }

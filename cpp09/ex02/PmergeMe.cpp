@@ -1,70 +1,27 @@
 #include "PmergeMe.hpp"
 
-int	PmergeMe::vectorBinarySearch( std::vector<int>& merged, int val )
-{
-	int		low = 0;
-	int		high = merged.size();
-	int		mid;
-
-	while (low < high)
-	{
-		mid = low + (high - low) / 2;
-		if ( merged[mid] < val )
-			low = mid + 1;
-		else
-			high = mid;
-	}
-	return ( low );
-}
-
-void	PmergeMe::vectorMerge( std::vector<int> &left, std::vector<int> &right, std::vector<int> &merged )
-{
-	merged.clear();
-
-
-	for (unsigned int i = 0; i < left.size(); ++i)
-	{
-		int pos = vectorBinarySearch(merged, left[i]);
-		merged.insert(merged.begin() + pos, left[i]);
-	}
-
-	for (unsigned int i = 0; i < right.size(); ++i)
-	{
-		int pos = vectorBinarySearch(merged, right[i]);
-		merged.insert(merged.begin() + pos, right[i]);
-	}
-}
-
-void	PmergeMe::vectorSort( std::vector<int> &c1 )
-{
-	if (c1.size() <= 1)
-		return ;
-
-	std::vector<int>	left(c1.begin(), c1.begin() + c1.size() / 2);
-	std::vector<int>	right(c1.begin() + c1.size() / 2, c1.end());
-
-	vectorSort( left );
-	vectorSort( right );
-	vectorMerge( left, right, c1 );
-}
-
 void	PmergeMe::compute( std::vector<int> const &input )
 {
 	std::vector<int>	c1 = input;
 	std::deque<int>		c2(input.begin(), input.end());
+	clock_t				start;
+	double				duration;
 
-	std::cout << "Before sorting: ";
-	for (unsigned int i = 0; i < c1.size(); i++) {
-		std::cout << c1[i] << " ";
-	}
-	std::cout << std::endl;
+	start = clock();
+	sort(c1);
+	duration = ( double )( clock() - start ) / CLOCKS_PER_SEC * 1000000;
 
-	vectorSort(c1);
+	//std::cout << "After sorting using Vector: ";
+	//printCont( c1 );
+	std::cout << "Time to process a range of " << c1.size() << " elements with std::vector<int>\t: ";
+	std::cout << duration << " us" << std::endl;
 
-	std::cout << "After sorting: ";
-	for (unsigned int i = 0; i < c1.size(); i++) {
-		std::cout << c1[i] << " ";
-	}
-	std::cout << std::endl;
-	return ;
+	start = clock();
+	sort(c2);
+	duration = ( double )( clock() - start ) / CLOCKS_PER_SEC * 1000000;
+
+	//std::cout << "After sorting using Deque: ";
+	//printCont( c2 );
+	std::cout << "Time to process a range of " << c2.size() << " elements with std::deque<int>\t: ";
+	std::cout << duration << " us" << std::endl;
 }
