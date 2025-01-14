@@ -3,6 +3,7 @@
 
 # include <vector>
 # include <deque>
+# include <list>
 # include <iostream>
 
 class PmergeMe
@@ -14,7 +15,7 @@ class PmergeMe
 		~PmergeMe( void );
 
 		template <typename Cont>
-		static int	binarySearch( Cont &merged, int val );
+		static typename Cont::iterator	binarySearch(Cont &cont, const typename Cont::value_type &val);
 
 		template <typename Cont>
 		static void	merge( Cont &left, Cont &right, Cont &merged );
@@ -22,7 +23,7 @@ class PmergeMe
 	public:
 		template <typename Cont>
 		static void printCont( Cont &cont );
-		
+
 		template <typename Cont>
 		static void	sort( Cont &cont );
 
@@ -30,17 +31,19 @@ class PmergeMe
 };
 
 template <typename Cont>
-int	PmergeMe::binarySearch( Cont &merged, int val )
+typename Cont::iterator	PmergeMe::binarySearch(Cont &cont, const typename Cont::value_type &val)
 {
-	int		low = 0;
-	int		high = merged.size();
-	int		mid;
+	typename Cont::iterator	low = cont.begin();
+	typename Cont::iterator	high = cont.end();
+	typename Cont::iterator	mid;
 
-	while (low < high)
+	while (low != high)
 	{
-		mid = low + (high - low) / 2;
-		if ( merged[mid] < val )
-			low = mid + 1;
+		mid = low;
+		std::advance( mid, std::distance( low, high ) / 2 );
+		
+		if ( *mid < val )
+			low = ++mid;
 		else
 			high = mid;
 	}
@@ -52,16 +55,21 @@ void	PmergeMe::merge( Cont &left, Cont &right, Cont &merged )
 {
 	merged.clear();
 
-	for (unsigned int i = 0; i < left.size(); ++i)
+	typename Cont::iterator it_left = left.begin();
+	typename Cont::iterator it_right = right.begin();
+
+	while (it_left != left.end())
 	{
-		int pos = binarySearch(merged, left[i]);
-		merged.insert(merged.begin() + pos, left[i]);
+		typename Cont::iterator	pos = binarySearch(merged, *it_left);
+		merged.insert(pos, *it_left);
+		++it_left;
 	}
 
-	for (unsigned int i = 0; i < right.size(); ++i)
+	while (it_right != right.end())
 	{
-		int pos = binarySearch(merged, right[i]);
-		merged.insert(merged.begin() + pos, right[i]);
+		typename Cont::iterator	pos = binarySearch(merged, *it_right);
+		merged.insert(pos, *it_right);
+		++it_right;
 	}
 }
 
@@ -71,8 +79,13 @@ void	PmergeMe::sort( Cont &cont )
 	if ( cont.size() <= 1 )
 		return ;
 
-	Cont	left( cont.begin(), cont.begin() + cont.size() / 2 );
-	Cont	right( cont.begin() + cont.size() / 2, cont.end() );
+	typename Cont::iterator	mid = cont.begin();
+	size_t					midIndex = cont.size() / 2;
+	for (size_t i = 0; i < midIndex; ++i)
+		++mid;
+
+	Cont left(cont.begin(), mid);
+	Cont right(mid, cont.end());
 
 	sort( left );
 	sort( right );
@@ -82,8 +95,8 @@ void	PmergeMe::sort( Cont &cont )
 template <typename Cont>
 void	PmergeMe::printCont( Cont &cont )
 {
-	for ( unsigned int i = 0; i < cont.size(); ++i )
-		std::cout << cont[i] << " ";
+	for (typename Cont::iterator it = cont.begin(); it != cont.end(); ++it)
+		std::cout << *it << " ";
 	std::cout << std::endl;
 }
 
