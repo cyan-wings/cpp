@@ -1,4 +1,6 @@
 #include "ScalarConverter.hpp"
+#include <climits>
+#include <limits>
 
 void	ScalarConverter::disError( std::string const &param ) { std::cout << param << " Conversion invalid." << std::endl; }
 
@@ -22,8 +24,8 @@ void	ScalarConverter::disNan( void )
 {
 	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: impossible" << std::endl;
-	std::cout << "float: " << std::nanf("") << "f" << std::endl;
-	std::cout << "double: " << std::nan("") << std::endl;
+	std::cout << "float: " << nanf("") << "f" << std::endl;
+	std::cout << "double: " << nan("") << std::endl;
 }
 
 void	ScalarConverter::disChar( char c )

@@ -1,4 +1,5 @@
 #include "Base.hpp"
+#include <cstdlib>
 #include <iostream>
 
 static Base	*generate( void )
