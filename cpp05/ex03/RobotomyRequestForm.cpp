@@ -1,4 +1,5 @@
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 #include <fstream>
 
 RobotomyRequestForm::RobotomyRequestForm( std::string const &target )

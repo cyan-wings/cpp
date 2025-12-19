@@ -1,4 +1,5 @@
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 #include <fstream>
 
 RobotomyRequestForm::RobotomyRequestForm( std::string const &target )
@@ -17,7 +18,7 @@ void	RobotomyRequestForm::execute( Bureaucrat const &executor ) const
 	std::cout << "Bzzz..." << std::endl;
 	srand(static_cast<unsigned int>(time(0)));
 	if (rand() % 2 == 0)
-		std::cout << _target << "is robotomized successfully." << std::endl;
+		std::cout << _target << " is robotomized successfully." << std::endl;
 	else
 		std::cout << "Robotomy failed." << std::endl;
 }
