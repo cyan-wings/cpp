@@ -1,6 +1,7 @@
 #include "Array.hpp"
 #include "Zombie.hpp"
 #include <iostream>
+#include <cstdlib>
 
 void	zombieTest( void )
 {
