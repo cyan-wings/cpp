@@ -17,7 +17,7 @@ char const	*BitcoinExchange::DataFileFormatErrorException::what( void ) const th
 
 bool	BitcoinExchange::parseFile( std::string const& filename )
 {
-	std::ifstream	file(filename);
+	std::ifstream	file( filename.c_str() );
 
 	if ( !file )
 		return ( false );
@@ -25,20 +25,9 @@ bool	BitcoinExchange::parseFile( std::string const& filename )
 	return ( true );
 }
 
-std::time_t	BitcoinExchange::parseDate( std::string const &dateStr )
-{
-	std::tm				tm = {};
-	std::stringstream	ss(dateStr);
-
-	ss >> std::get_time( &tm, "%Y-%m-%d" );
-	if ( ss.fail() )
-		throw ( DataFileFormatErrorException() );
-	return ( std::mktime(&tm) );
-}
-
 void	BitcoinExchange::collectData( std::string const &data, std::map<std::time_t,double> &chart )
 {
-	std::ifstream	dataFile( data );
+	std::ifstream	dataFile( data.c_str() );
 	if ( !dataFile.is_open() )
 		throw ( DataFileErrorException() );
 
@@ -61,7 +50,8 @@ void	BitcoinExchange::collectData( std::string const &data, std::map<std::time_t
 		ss >> rate;
 		if (ss.fail())
 			throw ( DataFileFormatErrorException() );
-		std::time_t		date = parseDate( dateStr );
+		std::time_t		date;
+		parseInputDate( dateStr, date );
 		chart.insert( std::make_pair(date, rate) );
 	}
 	dataFile.close();
@@ -72,7 +62,12 @@ void	BitcoinExchange::printChart( std::map<std::time_t,double> const &chart )
 	for (std::map<std::time_t, double>::const_iterator it = chart.begin(); it != chart.end(); ++it)
 	{
 		std::tm						*tm = std::localtime( &it->first );
-		std::cout << "Date: " << std::put_time(tm, "%Y-%m-%d") << " Rate: " << it->second << std::endl;
+		std::cout << "Date: "
+			<< (tm->tm_year + 1900) << "-"
+			<< (tm->tm_mon + 1) << "-"
+			<< tm->tm_mday
+			<< " Rate: " << it->second
+			<< std::endl;
 	}
 }
 
@@ -81,32 +76,54 @@ void	BitcoinExchange::pError( std::string const &msg )
 	std::cout << "Error: " << msg << std::endl;
 }
 
-bool	BitcoinExchange::parseInputDate( std::string const &dateStr, std::time_t &date )
+bool BitcoinExchange::parseInputDate(const std::string& dateStr, std::time_t& date)
 {
-	if (dateStr.empty())
+	int year, month, day;
+	char dash1, dash2;
+
+	std::istringstream ss(dateStr);
+	if (!(ss >> year >> dash1 >> month >> dash2 >> day) ||
+		dash1 != '-' || dash2 != '-')
 	{
 		pError("bad input => " + dateStr);
-		return ( false );
+		return false;
 	}
-	std::tm				tm = {};
-	std::stringstream	ss(dateStr);
-	ss >> std::get_time( &tm, "%Y-%m-%d" );
-	if ( ss.fail() )
-	{
-		pError("bad input => " + dateStr);
-		return ( false );
-	}
+
+	std::tm tm = {};
+	tm.tm_year = year - 1900;
+	tm.tm_mon  = month - 1;
+	tm.tm_mday = day;
+
 	date = std::mktime(&tm);
-	return ( true );
+	if (date == -1)
+	{
+		pError("bad input => " + dateStr);
+		return false;
+	}
+
+	return true;
+}
+
+bool	BitcoinExchange::stod_safe(const std::string& str, double& out)
+{
+	if (str.empty())
+		return false;
+
+	std::istringstream iss(str);
+	char extra;
+
+	if (!(iss >> out))
+		return false;
+
+	if (iss >> extra)
+		return false;
+
+	return true;
 }
 
 bool	BitcoinExchange::parseInputValue( std::string const &valueStr, double &value )
 {
-	try
-	{
-		value = std::stod( valueStr );
-	}
-	catch ( std::exception const & )
+	if (!stod_safe( valueStr, value))
 	{
 		pError("bad input => " + valueStr);
 		return ( false );
@@ -181,7 +198,6 @@ void	BitcoinExchange::showExchange( std::ifstream &inputFile, std::map<std::time
 		}
 		std::cout << dateStr << " => " << valueStr << " = " << it->second * value << std::endl;
 	}
-
 }
 
 void	BitcoinExchange::run( std::string const &data, std::string const &input )
@@ -195,7 +211,7 @@ void	BitcoinExchange::run( std::string const &data, std::string const &input )
 	collectData( data, chart );
 	// printChart( chart );
 	
-	std::ifstream	inputFile( input );
+	std::ifstream	inputFile( input.c_str() );
 	if ( !inputFile.is_open() )
 		throw ( InputFileErrorException() );
 	showExchange( inputFile, chart );
