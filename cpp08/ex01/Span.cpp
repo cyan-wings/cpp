@@ -1,6 +1,5 @@
 #include "Span.hpp"
 #include <climits>
-#include <iostream>
 
 Span::Span( unsigned int n ) : _maxSize( n ), _size( 0 ) { _array.reserve( n ); }
 
@@ -92,5 +91,5 @@ std::ostream				&operator<<( std::ostream &out, Span const &s )
 			out << ", ";
 	}
 	out << "]";
-    return ( out );
+	return ( out );
 }
