@@ -14,15 +14,6 @@ void	givenTest( void )
 	std::cout << sp << std::endl;
 }
 
-void	addRandomNumbers( Span &sp, unsigned int amount )
-{
-	srand(static_cast<unsigned int>(time(0)));
-	unsigned int	i = -1;
-
-	while (++i < amount)
-		sp.addNumber(rand());
-}
-
 void	selfTest( void )
 {
 	Span	sp = Span(10000);
@@ -38,21 +29,15 @@ void	selfTest( void )
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	addRandomNumbers(sp, 10000);
+	sp.addRandomNumbers(10000);
 	std::cout << sp << std::endl;
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
-	addRandomNumbers(copy, 10);
+	copy.addRandomNumbers(10);
 	
 
-	try
-	{
-		addRandomNumbers(copy, 11);
-	}
-	catch ( std::exception const &e )
-	{
-		std::cerr << e.what() << std::endl;
-	}
+
+	copy.addRandomNumbers(11);
 	std::cout << copy << std::endl;
 	std::cout << copy.shortestSpan() << std::endl;
 	std::cout << copy.longestSpan() << std::endl;

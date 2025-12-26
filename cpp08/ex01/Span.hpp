@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <algorithm>
+# include <vector>
 
 class Span
 {
@@ -27,6 +28,7 @@ class Span
 				char const	*what( void ) const throw();
 		};
 		void				addNumber( int number );
+		void				addRandomNumbers( unsigned int amount );
 
 		class CannotGetSpanException : public std::exception
 		{

@@ -1,4 +1,6 @@
 #include "Span.hpp"
+#include <climits>
+#include <iostream>
 
 Span::Span( unsigned int n ) : _maxSize( n ), _size( 0 ) { _array.reserve( n ); }
 
@@ -31,6 +33,24 @@ void			Span::addNumber( int number )
 		throw ( Span::AddToFullSpanException() );
 	_array.push_back( number );
 	++_size;
+}
+
+void			Span::addRandomNumbers( unsigned int amount )
+{
+	srand(static_cast<unsigned int>(time(0)));
+	unsigned int	i = -1;
+
+	while (++i < amount)
+	{
+		try
+		{
+			addNumber(rand());
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
 }
 
 char const		*Span::CannotGetSpanException::what( void ) const throw() { return ( "Not enough elements to find span." ); }
